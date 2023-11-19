@@ -19,7 +19,7 @@ TIME_TO_VOTE: int - the number of seconds a poll will last before expiring
 try:
     config = load(open("config.json", "r"))
 except FileNotFoundError:
-    print("config file not found, falling back on default config.")
+    print("config file not found, creating default config.")
     config = {
         "DEV_MODE": False,
         "DEV_ID": 999999999999999,
@@ -29,6 +29,7 @@ except FileNotFoundError:
         "TIME_TO_VOTE": 2 * 60,
     }
     dump(config, open("config.json", "w"), indent=4)
+    quit()
 
 
 @bot.event
